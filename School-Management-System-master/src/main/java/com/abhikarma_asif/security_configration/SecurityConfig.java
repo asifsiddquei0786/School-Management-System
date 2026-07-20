@@ -1,5 +1,4 @@
 package com.abhikarma_asif.security_configration;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,9 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
 import com.abhikarma_asif.service.CustomUserDetailsService;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig
@@ -24,7 +21,7 @@ public class SecurityConfig
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
 	{
 		http.csrf().disable().authorizeHttpRequests()
-		.requestMatchers("/index", "/register", "/login", "/password-request", "/reset-password").permitAll()
+		.requestMatchers("/", "/index", "/register", "/login", "/password-request", "/reset-password").permitAll()
 		.requestMatchers(SECURED_URLs).authenticated()
 		.requestMatchers("/resources/**", "/static/**", "/css/**", "/assets/**", "/js/**", "/img/**", "/icon/**", "/fonts/**", "/plugins/**", "studentimages/**", "/teacherimages/**", "starstudentimages/**").permitAll()
 		.and()
